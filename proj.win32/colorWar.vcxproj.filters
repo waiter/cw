@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ScreenChanger">
+      <UniqueIdentifier>{51c4db73-1f62-48ca-b4e2-145c6e075c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Util">
+      <UniqueIdentifier>{3bccb21a-f836-4967-9920-41a6e2b10a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene">
+      <UniqueIdentifier>{696b5129-6c55-472c-b1a7-7a531bba4aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Constant">
+      <UniqueIdentifier>{82a4be24-27a4-4e1b-a253-cb09c1e5c809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Music">
+      <UniqueIdentifier>{8ff84c48-125c-4e92-baf9-47d031453d22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScreenChanger\ScreenChanger.cpp">
+      <Filter>Classes\ScreenChanger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\Utils.cpp">
+      <Filter>Classes\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LogoScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\Button.cpp">
+      <Filter>Classes\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Constant\Constant.cpp">
+      <Filter>Classes\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MainScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Music\MusicManager.cpp">
+      <Filter>Classes\Music</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScreenChanger\DebugResolution.h">
+      <Filter>Classes\ScreenChanger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScreenChanger\ScreenChanger.h">
+      <Filter>Classes\ScreenChanger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\Utils.h">
+      <Filter>Classes\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GlobleDefine.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameScene.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\LogoScene.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\Button.h">
+      <Filter>Classes\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\Constant.h">
+      <Filter>Classes\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\MainScene.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Music\MusicManager.h">
+      <Filter>Classes\Music</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
