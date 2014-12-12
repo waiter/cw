@@ -7,6 +7,19 @@
 #define T_START_TIME			5.0f
 
 #define BEST_SCORE			"bs"
+#define CUR_LANGUAGE		"cl"
+
+enum{
+	laNone = 0,
+	laEnglish,
+	laChinese,
+	laJapanese,
+	laKorean,
+	laFrench,
+	laGerman,
+	laItalian,
+	laRussian,
+};
 class Constant
 {
 public:
@@ -27,7 +40,13 @@ public:
 
 	static void saveScore();
 
+	static std::string getCurrentLaStr();
+	static int getCurrentLa();
+	static std::string getLaStr(int la);
+	static void setToNewLa(int la);
+
 	static bool isNeedTip;
+	static bool isShowAd;
 
 	static std::string savePath;
 	static int playTimes;
@@ -35,5 +54,6 @@ private:
 	static int _bestScore;
 	static float _currentTime;
 	static int _currentScore;
+	static int _currentLanguage;
 };
 #endif //__CONSTANT_H__

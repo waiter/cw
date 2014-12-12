@@ -10,12 +10,17 @@ public:
 	CREATE_FUNC(MainScene);
 
 	virtual void keyBackClicked();
+	void showBigFrame(bool isOpen , cocos2d::ccColor3B color);
 
 	static cocos2d::CCScene* scene();
 private:
-
+	int _needChangeToLa;
+	cocos2d::ccColor3B _color;
 	void startCallBack(cocos2d::CCObject* pSender);
+	void noAdCallBack(cocos2d::CCObject* pSender);
+	void flagCallBack(cocos2d::CCObject* pSender);
 
 	void resetBalls(cocos2d::CCObject* ball);
+	void changeLa();
 };
 #endif //__MAIN_SCENE_H__

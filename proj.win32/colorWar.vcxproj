@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
+    <ProjectGuid>{8F8C2B25-0338-4EE0-BCC8-3A65C6B1BD47}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -77,7 +77,7 @@
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libExtensions.lib;libcocos2d.lib;libCocosDenshion.lib;opengl32.lib;glew32.lib;libBox2d.lib;libchipmunk.lib;libcurl_imp.lib;pthreadVCE2.lib;websockets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcocos2d.lib;libCocosDenshion.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -89,8 +89,7 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(SolutionDir)external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Command>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -130,6 +129,7 @@ xcopy /Y /Q "$(SolutionDir)external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Co
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Constant\Constant.cpp" />
     <ClCompile Include="..\Classes\Music\MusicManager.cpp" />
+    <ClCompile Include="..\Classes\Scene\ChangeScene.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
     <ClCompile Include="..\Classes\Scene\LogoScene.cpp" />
     <ClCompile Include="..\Classes\Scene\MainScene.cpp" />
@@ -143,6 +143,7 @@ xcopy /Y /Q "$(SolutionDir)external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Co
     <ClInclude Include="..\Classes\Constant\Constant.h" />
     <ClInclude Include="..\Classes\GlobleDefine.h" />
     <ClInclude Include="..\Classes\Music\MusicManager.h" />
+    <ClInclude Include="..\Classes\Scene\ChangeScene.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
     <ClInclude Include="..\Classes\Scene\LogoScene.h" />
     <ClInclude Include="..\Classes\Scene\MainScene.h" />

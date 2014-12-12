@@ -21,12 +21,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	pDirector->setOpenGLView(pEGLView);
 	ScreenChanger::Init();
 
+	//Constant::isShowAd = false;
 	if(Constant::savePath.empty()){
 		Constant::savePath = CCFileUtils::sharedFileUtils()->getWritablePath();
 	}
 
 //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//	if(GlobalData::packageName.compare("com.feelingtouch.quizgame") != 0){
+//	if(GlobalData::packageName.compare("") != 0){
 //		CCLog("Invaild Package!!");
 //		CCDirector::sharedDirector()->end();
 //	}

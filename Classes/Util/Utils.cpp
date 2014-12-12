@@ -81,6 +81,11 @@ void Utils::showAd()
 #endif
 }
 
+void Utils::toNoAd()
+{
+
+}
+
 extern "C"
 {
 	long long getMillSec()
@@ -120,6 +125,9 @@ extern "C"
 		std::string stemp = JniHelper::jstring2string(path);
 
 		Constant::savePath = stemp;
+	}
+	void Java_com_colortheworld_colorwar_j_sa(JNIEnv*  env, jobject thiz , jboolean s){
+		Constant::isShowAd = s;
 	}
 }
 #endif

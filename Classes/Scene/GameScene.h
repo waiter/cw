@@ -43,5 +43,6 @@ private:
 	void shareCallBack(cocos2d::CCObject* pSender);
 	void resetWithStage(bool isRandom = false);
 	void restartGame();
+	void noAdCallBack(cocos2d::CCObject* pSender);
 };
 #endif //__GAME_SCENE_H__

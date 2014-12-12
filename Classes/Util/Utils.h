@@ -10,6 +10,7 @@ public:
 
 	static void share(std::string imageUrl);
 	static void showAd();
+	static void toNoAd();
 private:
 	static float _diffColorDis[4];
 };

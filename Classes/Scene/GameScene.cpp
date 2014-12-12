@@ -56,7 +56,7 @@ bool GameScene::init()
 		addChild(_bgColor);
 		_bgColor->retain();
 
-		CCSpriteBatchNode* bn = CCSpriteBatchNode::create("all.png",26);
+		CCSpriteBatchNode* bn = CCSpriteBatchNode::create("total.png",25);
 		addChild(bn,1);
 
 		float DisP = 640.0f / 5.0f;
@@ -76,7 +76,7 @@ bool GameScene::init()
 		}
 
 		_tips = CCSprite::createWithSpriteFrameName("points.png");
-		bn->addChild(_tips,26);
+		addChild(_tips,2);
 		_tips->setAnchorPoint(ccp(0.5f,1));
 		_tips->retain();
 		_tips->setVisible(false);
@@ -87,7 +87,7 @@ bool GameScene::init()
 		lc->setPositionY(SC_HEIGHT()-leftHight);
 		addChild(lc,2);
 
-		_flagBn = CCSpriteBatchNode::create("all.png",11);
+		_flagBn = CCSpriteBatchNode::create("total.png",11);
 		lc->addChild(_flagBn);
 		_flagBn->retain();
 
@@ -110,11 +110,13 @@ bool GameScene::init()
 		timeBarBg->setPosition(ccp(SC_WIDTH()/2.0f,1.5f* leftHight/3.0f));
 		_flagBn->addChild(timeBarBg);
 
-		_timeProgress = CCProgressTimer::create(CCSprite::createWithSpriteFrameName("timebar.png"));
+		CCSprite* tempS = CCSprite::createWithSpriteFrameName("timebar.png");
+		tempS->setColor(ccc3(200,52,43));
+		_timeProgress = CCProgressTimer::create(tempS);
 		_timeProgress->setType(kCCProgressTimerTypeBar);
 		_timeProgress->setMidpoint(ccp(0,0.5f));
 		_timeProgress->setBarChangeRate(ccp(1,0));
-		_timeProgress->setColor(ccc3(200,52,43));
+		//_timeProgress->setColor(ccc3(200,52,43));
 		_timeProgress->setPosition(timeBarBg->getPosition());
 		lc->addChild(_timeProgress);
 		_timeProgress->retain();
@@ -134,12 +136,12 @@ bool GameScene::init()
 		_gameOverLayer->retain();
 
 		CCSprite* bestS = CCSprite::createWithSpriteFrameName("bestscore.png");
-		bestS->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.8f));
+		bestS->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.85f));
 		bestS->setColor(ccBLACK);
 		_gameOverLayer->addChild(bestS);
 
 		_bestScore = CCLabelBMFont::create("000","font.fnt");
-		_bestScore->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.7f));
+		_bestScore->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.75f));
 		_bestScore->setColor(ccBLACK);
 		_gameOverLayer->addChild(_bestScore);
 		_bestScore->retain();
@@ -157,6 +159,17 @@ bool GameScene::init()
 			);
 		shareB->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.3f));
 		_gameOverLayer->addChild(shareB);
+
+		if(Constant::isShowAd){
+			shareB->setPositionY(overHeight * 0.3f + 120);
+			restartB->setPositionY(overHeight * 0.3f + 240);
+			Button* noAdB = Button::create(
+				CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("noad.png"),
+				this, menu_selector(GameScene::noAdCallBack)
+				);
+			noAdB->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.3f));
+			_gameOverLayer->addChild(noAdB);
+		}
 
 		_gameOverLayer->setVisible(false);
 
@@ -431,4 +444,11 @@ void GameScene::restartGame()
 void GameScene::keyBackClicked()
 {
 	CCDirector::sharedDirector()->end();
+}
+
+void GameScene::noAdCallBack( cocos2d::CCObject* pSender )
+{
+	MusicManager::playSound(SOUND_CLICK);
+	Utils::toNoAd();
+
 }

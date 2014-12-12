@@ -4,6 +4,12 @@ USING_NS_CC;
 void Constant::init()
 {
 	_bestScore = CCUserDefault::sharedUserDefault()->getIntegerForKey(BEST_SCORE,-3);
+	_currentLanguage = CCUserDefault::sharedUserDefault()->getIntegerForKey(CUR_LANGUAGE,0);
+	if(_currentLanguage == laNone){
+		_currentLanguage = laEnglish;
+		CCUserDefault::sharedUserDefault()->setIntegerForKey(CUR_LANGUAGE,_currentLanguage);
+		CCUserDefault::sharedUserDefault()->flush();
+	}
 }
 
 void Constant::reset()
@@ -65,6 +71,55 @@ void Constant::saveScore()
 	CCUserDefault::sharedUserDefault()->setIntegerForKey(BEST_SCORE,_bestScore);
 	CCUserDefault::sharedUserDefault()->flush();
 }
+
+std::string Constant::getCurrentLaStr()
+{
+	if(_currentLanguage == laNone){
+		_currentLanguage = laEnglish;
+		CCUserDefault::sharedUserDefault()->setIntegerForKey(CUR_LANGUAGE,_currentLanguage);
+		CCUserDefault::sharedUserDefault()->flush();
+	}
+	return getLaStr(_currentLanguage);
+}
+
+int Constant::getCurrentLa()
+{
+	return _currentLanguage;
+}
+
+std::string Constant::getLaStr( int la )
+{
+	switch(la){
+	case laChinese:
+		return "zh";
+	case laJapanese:
+		return "ja";
+	case laKorean:
+		return "ko";
+	case laFrench:
+		return "fr";
+	case laGerman:
+		return "de";
+	case laItalian:
+		return "it";
+	case laRussian:
+		return "ru";
+	}
+	return "en";
+}
+
+void Constant::setToNewLa( int la )
+{
+	if(la > 0 && la < 9){
+		_currentLanguage = la;
+		CCUserDefault::sharedUserDefault()->setIntegerForKey(CUR_LANGUAGE,_currentLanguage);
+		CCUserDefault::sharedUserDefault()->flush();
+	}
+}
+
+int Constant::_currentLanguage = laEnglish;
+
+bool Constant::isShowAd = true;
 
 int Constant::playTimes = 0;
 

@@ -6,7 +6,7 @@
 
 USING_NS_CC;
 
-#define USE_WIN32_CONSOLE
+//#define USE_WIN32_CONSOLE
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
@@ -29,6 +29,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("colorwar");
 
+	float tooHight  = 700.0f;
 	float tempWidth = 960;
 	float tempHeight = 640;
 #if RESOLUTION_DEBUG_ON
@@ -52,13 +53,13 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	float zr = 1.0f;
 #if SCREEN_ORIENTATION == SCREEN_LANDSCAPE
 	eglView->setFrameSize(tempWidth, tempHeight);
-	if(tempHeight > 960){
-		zr = 960.0f / tempHeight;
+	if(tempHeight > tooHight){
+		zr = tooHight / tempHeight;
 	}
 #else
 	eglView->setFrameSize(tempHeight, tempWidth);
-	if(tempWidth > 960){
-		zr = 960.0f / tempWidth;
+	if(tempWidth > tooHight){
+		zr = tooHight / tempWidth;
 	}
 #endif
 	eglView->setFrameZoomFactor(zr);

@@ -12,7 +12,10 @@ bool LogoScene::init()
 	{
 		CC_BREAK_IF(!CCLayer::init());
 		Constant::init();
-		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("all.plist");
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("total.plist");
+		char s[100] = {0};
+		sprintf(s ,"la_%s.plist",Constant::getCurrentLaStr().c_str() );
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(s);
 
 		CCLayerColor* ly = CCLayerColor::create(ccc4(255,255,255,255));
 		addChild(ly);
@@ -49,5 +52,4 @@ void LogoScene::toGameScene()
 void LogoScene::loadAllRes( float dt )
 {
 	MusicManager::initAll();
-	CCTextureCache::sharedTextureCache()->addImage("all.png");
 }

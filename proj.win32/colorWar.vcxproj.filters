@@ -54,6 +54,9 @@
     <ClCompile Include="..\Classes\Music\MusicManager.cpp">
       <Filter>Classes\Music</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\ChangeScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Music\MusicManager.h">
       <Filter>Classes\Music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\ChangeScene.h">
+      <Filter>Classes\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
