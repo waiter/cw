@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <org.cocos2dx.lib.Cocos2dxEditText
+        android:id="@+id/game_edit_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </org.cocos2dx.lib.Cocos2dxEditText>
+
+    <org.cocos2dx.lib.Cocos2dxGLSurfaceView
+        android:id="@+id/game_content_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </org.cocos2dx.lib.Cocos2dxGLSurfaceView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/ad_wrapper"
+            android:layout_width="320dip"
+            android:layout_height="50dip"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" >
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

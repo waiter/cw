@@ -7,6 +7,30 @@ void Constant::init()
 	_currentLanguage = CCUserDefault::sharedUserDefault()->getIntegerForKey(CUR_LANGUAGE,0);
 	if(_currentLanguage == laNone){
 		_currentLanguage = laEnglish;
+		ccLanguageType lt = CCApplication::sharedApplication()->getCurrentLanguage();
+		switch(lt){
+		case kLanguageChinese:
+			_currentLanguage = laChinese;
+			break;
+		case kLanguageFrench:
+			_currentLanguage = laFrench;
+			break;
+		case kLanguageItalian:
+			_currentLanguage = laItalian;
+			break;
+		case kLanguageGerman:
+			_currentLanguage = laGerman;
+			break;
+		case kLanguageRussian:
+			_currentLanguage = laRussian;
+			break;
+		case kLanguageKorean:
+			_currentLanguage = laKorean;
+			break;
+		case kLanguageJapanese:
+			_currentLanguage = laJapanese;
+			break;
+		}
 		CCUserDefault::sharedUserDefault()->setIntegerForKey(CUR_LANGUAGE,_currentLanguage);
 		CCUserDefault::sharedUserDefault()->flush();
 	}

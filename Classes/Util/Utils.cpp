@@ -83,7 +83,19 @@ void Utils::showAd()
 
 void Utils::toNoAd()
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+	JniMethodInfo methodInfo;
+	if (! JniHelper::getStaticMethodInfo(methodInfo,CLASS_NAME, "toPaid", "()V"))
+	{
+		return;
+	}
+	methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+	methodInfo.env->DeleteLocalRef(methodInfo.classID);
+#else
+	CCLOG("toNoAd");
+#endif
 }
 
 extern "C"
@@ -126,7 +138,7 @@ extern "C"
 
 		Constant::savePath = stemp;
 	}
-	void Java_com_colortheworld_colorwar_j_sa(JNIEnv*  env, jobject thiz , jboolean s){
+	void Java_com_colortheworld_colorwar_j_nsa(JNIEnv*  env, jobject thiz , jboolean s){
 		Constant::isShowAd = s;
 	}
 }
