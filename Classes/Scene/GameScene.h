@@ -1,6 +1,7 @@
 #ifndef __GAME_SCENE_H__
 #define __GAME_SCENE_H__
 #include "cocos2d.h"
+class Button;
 class GameScene : public cocos2d::CCLayer
 {
 public:
@@ -34,6 +35,8 @@ private:
 	cocos2d::CCLabelBMFont* _bestScore;
 	cocos2d::CCSprite* _tips;
 
+	Button* _noAdB;
+
 	void resetStage();
 	void moveEnd(float dt);
 	void ballSelectCallBack(cocos2d::CCObject* pSender);
@@ -44,5 +47,7 @@ private:
 	void resetWithStage(bool isRandom = false);
 	void restartGame();
 	void noAdCallBack(cocos2d::CCObject* pSender);
+
+	void notiNoAdCallBack(cocos2d::CCObject* pSender);
 };
 #endif //__GAME_SCENE_H__

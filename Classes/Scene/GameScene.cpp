@@ -23,12 +23,14 @@ GameScene::GameScene()
 	,_gameOverLayer(NULL)
 	,_bestScore(NULL)
 	,_tips(NULL)
+	,_noAdB(NULL)
 {
 
 }
 
 GameScene::~GameScene()
 {
+	CCNotificationCenter::sharedNotificationCenter()->removeAllObservers(this);
 	CC_SAFE_RELEASE_NULL(_bgColor);
 	CC_SAFE_RELEASE_NULL(_allBalls);
 	CC_SAFE_RELEASE_NULL(_colorflagBalls);
@@ -38,6 +40,7 @@ GameScene::~GameScene()
 	CC_SAFE_RELEASE_NULL(_gameOverLayer);
 	CC_SAFE_RELEASE_NULL(_bestScore);
 	CC_SAFE_RELEASE_NULL(_tips);
+	CC_SAFE_RELEASE_NULL(_noAdB);
 }
 
 bool GameScene::init()
@@ -163,12 +166,15 @@ bool GameScene::init()
 		if(Constant::isShowAd){
 			shareB->setPositionY(overHeight * 0.3f + 120);
 			restartB->setPositionY(overHeight * 0.3f + 240);
-			Button* noAdB = Button::create(
+			_noAdB = Button::create(
 				CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("noad.png"),
 				this, menu_selector(GameScene::noAdCallBack)
 				);
-			noAdB->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.3f));
-			_gameOverLayer->addChild(noAdB);
+			_noAdB->setPosition(ccp(SC_WIDTH()/2.0f , overHeight * 0.3f));
+			_gameOverLayer->addChild(_noAdB);
+			_noAdB->retain();
+
+			CCNotificationCenter::sharedNotificationCenter()->addObserver(this,callfuncO_selector(GameScene::notiNoAdCallBack),SHOW_AD,NULL);
 		}
 
 		_gameOverLayer->setVisible(false);
@@ -451,4 +457,13 @@ void GameScene::noAdCallBack( cocos2d::CCObject* pSender )
 	MusicManager::playSound(SOUND_CLICK);
 	Utils::toNoAd();
 
+}
+
+void GameScene::notiNoAdCallBack( cocos2d::CCObject* pSender )
+{
+	if(_noAdB){
+		_noAdB->removeFromParentAndCleanup(true);
+		CC_SAFE_RELEASE_NULL(_noAdB);
+		CCNotificationCenter::sharedNotificationCenter()->removeObserver(this,SHOW_AD);
+	}
 }

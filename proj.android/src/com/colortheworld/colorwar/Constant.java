@@ -10,4 +10,8 @@ public class Constant {
 	public final static int TO_PAID_V = 2;
 	
 	public static String shareImage = "";
+	
+	public static String[] checkoutId = {
+		"colorwar_no_ad"
+	};
 }

@@ -95,6 +95,7 @@ void Utils::toNoAd()
 	methodInfo.env->DeleteLocalRef(methodInfo.classID);
 #else
 	CCLOG("toNoAd");
+	Constant::noAd();
 #endif
 }
 
@@ -140,6 +141,9 @@ extern "C"
 	}
 	void Java_com_colortheworld_colorwar_j_nsa(JNIEnv*  env, jobject thiz , jboolean s){
 		Constant::isShowAd = s;
+	}
+	void Java_com_colortheworld_colorwar_j_nna(JNIEnv*  env, jobject thiz){
+		Constant::noAd();
 	}
 }
 #endif

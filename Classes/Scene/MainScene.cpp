@@ -11,13 +11,15 @@ USING_NS_CC;
 
 MainScene::MainScene()
 	:_needChangeToLa(1)
+	,_noAd(NULL)
 {
 
 }
 
 MainScene::~MainScene()
 {
-
+	CCNotificationCenter::sharedNotificationCenter()->removeAllObservers(this);
+	CC_SAFE_RELEASE_NULL(_noAd);
 }
 
 bool MainScene::init()
@@ -61,12 +63,15 @@ bool MainScene::init()
 			float dty = 60;
 			startB->setPositionY(ty+dty);
 
-			Button* noAdB = Button::create(
+			_noAd = Button::create(
 				CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("noad.png"),
 				this, menu_selector(MainScene::noAdCallBack)
 				);
-			noAdB->setPosition(ccp(tx,ty-dty));
-			addChild(noAdB);
+			_noAd->setPosition(ccp(tx,ty-dty));
+			addChild(_noAd);
+			_noAd->retain();
+
+			CCNotificationCenter::sharedNotificationCenter()->addObserver(this,callfuncO_selector(MainScene::notiNoAdCallBack),SHOW_AD,NULL);
 		}
 
 		char s[100] = {0};
@@ -217,5 +222,14 @@ void MainScene::showBigFrame( bool isOpen , cocos2d::ccColor3B color )
 			CCDelayTime::create(time),
 			CCCallFunc::create(this,callfunc_selector(MainScene::changeLa))
 			));
+	}
+}
+
+void MainScene::notiNoAdCallBack( cocos2d::CCObject* pSender )
+{
+	if(_noAd){
+		_noAd->removeFromParentAndCleanup(true);
+		CC_SAFE_RELEASE_NULL(_noAd);
+		CCNotificationCenter::sharedNotificationCenter()->removeObserver(this,SHOW_AD);
 	}
 }

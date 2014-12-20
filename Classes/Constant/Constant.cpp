@@ -5,6 +5,9 @@ void Constant::init()
 {
 	_bestScore = CCUserDefault::sharedUserDefault()->getIntegerForKey(BEST_SCORE,-3);
 	_currentLanguage = CCUserDefault::sharedUserDefault()->getIntegerForKey(CUR_LANGUAGE,0);
+	if(Constant::isShowAd){
+		Constant::isShowAd = CCUserDefault::sharedUserDefault()->getBoolForKey(SHOW_AD,true);
+	}
 	if(_currentLanguage == laNone){
 		_currentLanguage = laEnglish;
 		ccLanguageType lt = CCApplication::sharedApplication()->getCurrentLanguage();
@@ -139,6 +142,14 @@ void Constant::setToNewLa( int la )
 		CCUserDefault::sharedUserDefault()->setIntegerForKey(CUR_LANGUAGE,_currentLanguage);
 		CCUserDefault::sharedUserDefault()->flush();
 	}
+}
+
+void Constant::noAd()
+{
+	Constant::isShowAd = false;
+	CCUserDefault::sharedUserDefault()->setBoolForKey(SHOW_AD,false);
+	CCUserDefault::sharedUserDefault()->flush();
+	CCNotificationCenter::sharedNotificationCenter()->postNotification(SHOW_AD);
 }
 
 int Constant::_currentLanguage = laEnglish;

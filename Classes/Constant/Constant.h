@@ -8,7 +8,7 @@
 
 #define BEST_SCORE			"bs"
 #define CUR_LANGUAGE		"cl"
-
+#define SHOW_AD				"sa"
 enum{
 	laNone = 0,
 	laEnglish,
@@ -44,6 +44,8 @@ public:
 	static int getCurrentLa();
 	static std::string getLaStr(int la);
 	static void setToNewLa(int la);
+
+	static void noAd();
 
 	static bool isNeedTip;
 	static bool isShowAd;

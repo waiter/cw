@@ -17,4 +17,5 @@ public class j {
 	
 	public static native void nsp1(String p);
 	public static native void nsa(boolean isA);
+	public static native void nna();
 }

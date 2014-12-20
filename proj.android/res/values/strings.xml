@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Color War</string>
+    
+    <!-- for checkout -->
+    <string name="felpay_billing_fail">Purchase fails, if there are any changes to your
+		account, please contact with Google!</string>
+    <string name="felpay_billing_not_supported_title">Can\'t make purchases</string>
+    <string name="felpay_billing_not_supported_message">The Market billing
+		service is not available at this
+		time. You can continue to use this game but
+		you
+		won\'t be able to make
+		purchases.</string>
 </resources>
